@@ -1,0 +1,1 @@
+Napisaæ blok PL/SQL, który skasuje wszystkie np. widoki (lub tabele) ze swojego schematu. Wykorzystujemy kursor oraz dynamiczny SQL (EXECUTE IMMEDIATE Statement).

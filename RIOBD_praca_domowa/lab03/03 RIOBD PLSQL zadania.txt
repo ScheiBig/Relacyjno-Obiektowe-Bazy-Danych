@@ -1,0 +1,39 @@
+1. Zadeklaruj zmienne v_tekst i v_liczba o wartoœciach odpowiednio „Witaj, œwiecie!” i 10.89. Wyœwietl wartoœci tych zmiennych.
+ 
+2. Do zmiennych zadeklarowanych w zadaniu 1 dodaj odpowiednio: do zmiennej v_tekst wartoœæ „Witaj, nowy dniu!”, do zmiennej v_liczba dodaj wartoœæ 9545. Wyœwietl wartoœci tych zmiennych.
+ 
+3. Napisz program dodaj¹cy do siebie dwie liczby. Liczby, które maj¹ byæ do siebie dodane, powinny byæ podawane dynamicznie (np. a := &Podaj_zmienna_a)
+ 
+4. Napisz program, który oblicza pole powierzchni ko³a i obwód ko³a o podanym promieniu. W programie pos³u¿ siê zdefiniowan¹ przez siebie sta³¹ PI = 3.14
+ 
+5. Napisz program, który wyœwietli nastêpuj¹ce informacje o najlepiej zarabiaj¹cym pracowniku. Program powinien korzystaæ ze zmiennych v_Last_Name v_Job_Title o typach identycznych z typami atrybutów nazwisko, etat w tabeli employees oraz jobs.
+ 
+6. Napisz program, który bêdzie wyœwietla³, w zale¿noœci od wyboru pracownika, datê zatrudnienia i liczbê lat pracy. 
+ 
+7. Napisz program, który bêdzie dzia³a³ tak d³ugo, jak d³ugo nie nadejdzie 15 sekunda dowolnej minuty.
+ 
+8.  Napisz program, który dla podanego przez u¿ytkownika n obliczy wartoœæ wyra¿enia n! = 1 * 2 * 3 * ... * n
+ 
+9.  Napisz program który wyliczy, kiedy w XXI wieku bêd¹ pi¹tki przypadaj¹ce na 13 dzieñ miesi¹ca.
+
+10. Napisz program, który zamieni wartoœæ procentow¹ na ocenê postaci A (80-100%>, B (60-80%>, C (40-60%> lub D poni¿ej 40%.
+
+11. Napisz program, który wyœwietli aktualny dzieñ tygodnia np. 'Dzisiaj jest czwartek'
+ 
+12. Zdefiniuj kursor zawieraj¹cy nazwiska i daty zatrudnienia wszystkich 'Stock Clerk'. Pos³u¿ siê tym kursorem do wyœwietlenia nastêpuj¹cych informacji LAST_NAME zosta³ zatrudniony w roku YEAR (wykorzystaj polecenia OPEN-FETCH-CLOSE).
+ 
+13. Zdefiniuj kursor, dziêki któremu bêdzie mo¿na wyœwietliæ 3 najlepiej zarabiaj¹cych pracowników. Pos³u¿ siê atrybutem kursora %ROWCOUNT.
+ 
+14. Zbuduj kursor, który pozwoli Ci zwiêkszyæ o 20% p³acê podstawow¹ pracowników zatrudnionych w poniedzia³ek. Pos³u¿ siê pêtl¹ FOR z kursorem. Na koniec wycofaj transakcje.
+ 
+15. Napisz program, który zapyta siê u¿ytkownika o ¿¹dany etat a nastêpnie wyœwietli nazwiska wszystkich pracowników posiadaj¹cych dany etat. Zastosuj pêtlê FOR z kursorem sparametryzowanym.
+ 
+16. Rozszerz program z zadania 15 o obs³ugê b³êdów (np. niepoprawnego wpisania nazwy etatu, który nie istnieje)
+ 
+17. Napisz kursor, który odczyta informacje o etacie 'Sales Manager' i przyzna im podwy¿kê w wysokoœci 20% ich pensji. Jeœli po podwy¿ce pensja któregoœ z pracowników przekroczy³aby wartoœæ maksymaln¹ (MAX_SALARY z tabeli JOBS), program powinien zg³osiæ b³¹d (skorzystaj z procedury RAISE APPLICATION ERROR). Nale¿y wycofaæ wszystkie transakcje zmiany pensji.
+
+18. SprawdŸ czy dana liczba jest liczb¹ parzyst¹ czy nieparzyst¹ podaj¹c na ekranie odpowiedni komunikat.
+
+19. SprawdŸ czy dana liczba jest liczb¹ pierwsz¹ czy nie podaj¹c na ekranie odpowiedni komunikat.
+
+20. Utwórz kilka widoków w swoim schemacie i napisz program do kasowania wszystkich widoków w swoim schemacie. Wykorzystujemy kursor oraz dynamiczny SQL (EXECUTE IMMEDIATE Statement).

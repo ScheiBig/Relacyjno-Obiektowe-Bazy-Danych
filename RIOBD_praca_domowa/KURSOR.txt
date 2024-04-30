@@ -1,0 +1,14 @@
+set serveroutput on;
+declare 
+    cursor kur1 is select sal 
+    from emp order by 1;
+    zm number(10);
+begin
+    open kur1;
+    loop
+    fetch kur1 into zm;
+    exit when kur1%notfound;
+    dbms_output.put_line(zm);
+    end loop;
+    close kur1;
+end;

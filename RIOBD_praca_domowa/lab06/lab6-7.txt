@@ -1,0 +1,20 @@
+ 
+------PROCEDURE
+1. Zdefiniuj procedurê, która wyœwietli na ekranie nazwisko oraz pensjê pracownika o identyfikatorze podanym jako pierwszy parametr. Je¿eli nie ma takiego id to zwrócony zostanie informacja a braku takiego pracownika.
+2. Zdefiniowaæ procedurê, która zwróci liczbê zatrudnionych wszystkich pracowników.
+3. Zdefiniowaæ procedurê, która zwróci liczbê departamentów bez pracowników.
+4. Zdefiniowaæ procedurê, która zwróci liczbê zatrudnionych w danym departamencie podanym jako pierwszy parametr typu IN.Parametr drugi typu OUT zwróci liczbê zatrudnionych.
+5. Zdefiniowaæ procedurê, która zwróci liczbê zatrudnionych w danym departamencie na danym stanowisku pracy podanym odpowiednio jako pierwszy i drugi parametr typu IN. Parametr trzeci typu OUT zwróci liczbê zatrudnionych.
+6. Zdefiniuj procedurê, która dla danego departamentu wyœwietli wszystkie nazwiska i imiona pracowników.
+7. Zdefiniuj procedurê która jako parametr wejœciowy przyjmie id managera, a parametrem wyjœciowym zwróci œredni¹ zarobków osób podleg³ych pod tego managera.
+------FUNCTION
+1. Zdefiniowaæ funkcjê, która wycina spacje na pocz¹tku i koñcu zmiennej typu VARCHAR2 i zwraca to co zostanie.
+2. Zdefiniowaæ funkcjê, która sprawdza czy dana liczba ca³kowita jest parzysta czy nieparzysta i zwraca wartoœæ 'Parzysta' lub 'Nieparzysta'.
+3. Zdefiniowaæ funkcjê, która dla podanej jako parametr wejœciowy daty (typ DATE) zwraca  dzieñ tygodnia w jêzyku polskim.
+4. Zdefiniowaæ funkcjê, która bêdzie zwracaæ œredni¹ zarobków w dziale, którego numer funkcja bêdzie przyjmowaæ jako parametr.
+5. Zdefiniowaæ funkcjê z trzema parametrami, która sprawdzi czy dane boki tworz¹ trój¹t, a jeœli tak to obliczyæ jego pole.
+6. Zdefiniowaæ funkcjê zamieniajac¹ wszystkie spacje podkreœleniem.
+7. Zdefiniowaæ funkcjê do odwracania stringu.
+8. Zdefiniowaæ funckcjê PESEL, która sprawdza czy liczba jest poprawnym typem CHAR o okreœlonej d³ugoœci zawieraj¹cy tylko cyfry od 0-9 (nie sprawdzamy poprawnoœci funkcji PESEL)
+9. Zdefiniowaæ funkcjê, która sprawdza czy dana liczba jest liczb¹ pierwsz¹.
+10. Zdefiniowaæ funkcjê do obliczenia wartoœci silnia z liczby ca³kowitej (zdefiniowaæ obs³ugê b³êdów w przypadku liczb mniejszych od 1 i takich, które przekrocz¹ zakres wykorzystywaneo typu.

@@ -1,0 +1,22 @@
+Pytania: 
+1. Wykorzystaj sk³adniê CASE to okreœlenia jak wysok¹ mamy pensjê 
+sal < 1000 to mamy wyœwietlany napis 'Niska pensja' 
+sal between 1000 and 2000 to mamy wyœwietlany napis 'Œrednia pensja' 
+sal >2000 to mamy wyœwietlany napis 'Wysoka pensja' 
+w innym przypadku mamy wyœwietlany napis 'brak wartoœci' 
+2. Wykorzystaj funkcjê NVL, NVL2, COALESCE, DECODE do zamiany wartoœci NULL na wartoœæ 0 w przypadku wyœwietlenia kolumny COMM w tabeli EMP. Przyk³ad z wykorzystaniem sk³adni CASE ma postaæ: 
+select ename ,sal,  
+	case when comm is null then 0  
+	else comm end as Dodatek  from emp; 
+3. Wyœwietl wynik zapytania, gdzie wartoœci NULL bêd¹ na koñcu lub pocz¹tku zestawu wyników. select * from emp order by comm nulls first; --nulls last (standardowo) 
+4. Podaj nazwê zalogowanego u¿ytkownika oraz jego id (funkcja USER, UID) Wyœwietl aktualna datê w formacie np.: 01-04-2018 13:35:29  
+5. Zamieñ ci¹g znaków na format daty np. '01-30-2017' (do wykorzystania podczas wstawia danych do pola typu Date) 
+6. Ile pe³nych miesiêcy up³ynê³o w okresie od pierwszej zatrudnionej osoby do ostatniej zatrudnionej osoby (MONTHS_BETWEEN) – podaj w pe³nych miesi¹cach? 
+7. Jaki jest data ostatniego dnia danego miesi¹ca  
+8. Ile dni ma luty w 2020 roku? 
+9. Zaokr¹glij datê, która przypada za 50 miesiêcy do pierwszego stycznia danego roku 10. W jakim dniu tygodnia jest Sylwester tego roku (dzieñ tygodnia ma byæ w jêzyku polskim)  wykorzystaj polecenie - alter session set nls_language 
+11. Dodaj 3 miesi¹ce do bie¿¹cej daty 
+12. Do aktualnej daty dodaj 3 dni i odejmij 1 godzinê.  
+13. Obliczyæ œredni zarobek w firmie (zaokr¹glij ROUND oraz utnij TRUNC do dwóch miejsc po przecinku). Wykorzystaj funkcjê to_char do przedstawienia w postaci wartoœci znakowej, gdzie mamy dwa miejsca po przecinku (czy dzia³a zaokr¹glanie) 
+14. ZnaleŸæ minimalny zarobek na stanowisku 'MANAGER'. 
+15. ZnaleŸæ, ilu pracowników pracuje w departamencie ACCOUNTING. 

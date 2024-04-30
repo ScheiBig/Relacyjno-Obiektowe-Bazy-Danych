@@ -1,0 +1,22 @@
+
+Dokumentacja (wybrane pliki *.pdf) opisuj¹ce sk³adniê jêzyka PLSQL znajduje siê w katalogu sieciowym:
+----------------------------------------------------------------------------------
+\\mars\zadania\PD\ORACLE\DOKUMENTAJCA_PLSQL_OBIEKTOWOSC
+
+W plikach o danych nazwach znajduj¹ siê nastêpuj¹ce materia³y:
+
+0.funkcje Oracle.pdf – jest to „œci¹ga” zawieraj¹ca najczêœciej wykorzystywane funkcje  ORACLE z przyk³adami ich u¿ycia.
+
+1.database-pl-sql-language-reference.pdf – dokument opisuj¹cy (na 850 stronach) sk³adniê jêzyka PL/SQL celem realizacji zadañ æwiczeniowych. Zawiera przyk³ady zastosowania bloków PLSQL  w tym procedur, funkcji, wyzwalaczy, pakietów itd.
+
+3.plsql_tutorial.pdf – j.w. –opis PL/SQL ze strony  https://www.tutorialspoint.com/
+
+4.object-relational-developers-guide.pdf – opis Obiektowoœci  w systemie ORACLE (na przedmiocie RIOBD – nie dotyczy)
+
+5.Obiektowoœæ.pdf – j.w. (na przedmiocie RIOBD – nie dotyczy)
+
+-------------------------------------------
+Pe³na dokumentacja systemu ORACLE znajduje siê na stronach www.oracle.com lub w zasobie sieciowym IMSI:
+UWAGA !!! – dokumentajca wa¿y ponad 1GB
+
+\\mars\Dokumentacja\Oracle 12c help
