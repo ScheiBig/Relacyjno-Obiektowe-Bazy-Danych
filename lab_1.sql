@@ -1,45 +1,17 @@
--- Tworzenie tabel
-
--- create table emp
--- as select *
--- from scott.emp
--- ;
-
--- create table dept
--- as select *
--- from scott.dept
--- ;
-
--- begin
---     execute immediate 'drop table emp';
--- exception
---     when others then
---         if sqlcode != -942 then raise;
---         end if;
--- end;
-
--- begin
---     execute immediate 'drop table dept';
--- exception
---     when others then
---         if sqlcode != -942 then raise;
---         end if;
--- end;
-
 ------------------
 -- Na zajęciach --
 ------------------
 
--- 1. Wyświetlić nazwiska pracowników oraz ich zawód:
+-- 1. Wyświetlić nazwiska pracowników oraz ich zawód.
 
-select 
+select
 	ename
 	, "JOB"
 from scott.emp
 ;
 
 
--- 2. Wyświetlić pierwsze 3 rekordy z tabeli emp;
+-- 2. Wyświetlić pierwsze 3 rekordy z tabeli emp.
 
 select *
 from scott.emp
@@ -47,7 +19,7 @@ fetch first 3 rows only
 ;
 
 
--- 3.  Wyświetlić pierwsze uporządkowane po nazwisku 3 rekordy z tabeli emp;
+-- 3. Wyświetlić pierwsze uporządkowane po nazwisku 3 rekordy z tabeli emp.
 
 select *
 from (
@@ -65,7 +37,8 @@ fetch first 3 rows only
 ;
 
 
--- 4.  Wybierz z tabeli emp wszystkie wzajemnie różne kombinacje numeru departamentu i stanowiska pracy:
+-- 4. Wybierz z tabeli emp wszystkie wzajemnie różne kombinacje numeru departamentu
+--    i stanowiska pracy.
 
 select distinct
 	deptno
@@ -74,7 +47,8 @@ from scott.emp
 ;
 
 
--- 5.  Wybierz nazwiska i pensje wszystkich pracowników których nazwiska zaczynają się na literę S i s oraz trzecią literę i
+-- 5. Wybierz nazwiska i pensje wszystkich pracowników których nazwiska zaczynają się
+--    na literę S i s oraz trzecią literę i.
 
 select
 	ename
@@ -91,7 +65,8 @@ where regexp_like( ename, '[sS].[iI].*' )
 ;
 
 
--- 6.  Wybierz nazwiska i wartości zarobków wszystkich pracowników łącznie z obliczeniem prowizji od początku roku (POLE COMM)
+-- 6. Wybierz nazwiska i wartości zarobków wszystkich pracowników łącznie z obliczeniem
+--    prowizji od początku roku (POLE COMM).
 
 select
 	ename
@@ -100,18 +75,18 @@ from scott.emp
 ;
 
 
--- 7. Podaj datę zegara systemowego
+-- 7. Podaj datę zegara systemowego.
 
-select 
+select
 	to_char( sysdate, 'yyyy-mm-dd hh24:mi:ss' )
 	, to_char( sysdate, 'day, dd month yyyy hh24:mi:ss' )
 from dual
 ;
 
 
--- 8. Do daty zegara systemowego dodaj 3 dni
+-- 8. Do daty zegara systemowego dodaj 3 dni.
 
-select 
+select
 	to_char( dt, 'yyyy-mm-dd hh24:mi:ss' )
 from (
 	select sysdate + 3 as dt
@@ -120,9 +95,9 @@ from (
 ;
 
 
--- 9. Do daty zegara systemowego dodaj 3 godziny
+-- 9. Do daty zegara systemowego dodaj 3 godziny.
 
-select 
+select
 	to_char( dt, 'yyyy-mm-dd hh24:mi:ss' )
 from (
 	select sysdate + 3 / 24 as dt
@@ -133,7 +108,7 @@ from (
 
 -- 10. Ile dni upłynęło od Twoich narodzin?
 
-select 
+select
 	floor( sysdate - date'1996-06-18' )
 	, round( sysdate - date'1996-06-18', 0 )
 from dual
@@ -142,7 +117,7 @@ from dual
 
 -- 11. Ile dni pozostało do Twoich urodzin?
 
-select 
+select
 	floor( date'2024-06-18' - sysdate )
 	, round( date'2024-06-18' - sysdate, 0 )
 from dual
@@ -153,20 +128,20 @@ from dual
 -- W domu --
 ------------
 
--- 1. Wykorzystaj składnię CASE to określenia jak wysoką mamy pensję
---    - sal < 1000 to mamy wyświetlany napis 'Niska pensja'
---    - sal between 1000 and 2000 to mamy wyświetlany napis 'Średnia pensja'
---    - sal >2000 to mamy wyświetlany napis 'Wysoka pensja'
---    - w innym przypadku mamy wyświetlany napis 'brak wartości'
+-- 1. Wykorzystaj składnię CASE to określenia jak wysoką mamy pensję:
+--    - sal < 1000 to mamy wyświetlany napis 'Niska pensja',
+--    - sal between 1000 and 2000 to mamy wyświetlany napis 'Średnia pensja',
+--    - sal >2000 to mamy wyświetlany napis 'Wysoka pensja',
+--    - w innym przypadku mamy wyświetlany napis 'brak wartości'.
 
 select
 	ename
 	, case
-		when sal < 1000 
+		when sal < 1000
 			then 'Niska pensja'
-		when sal between 1000 and 2000 
+		when sal between 1000 and 2000
 			then 'Srednia pensja'
-		when sal > 2000 
+		when sal > 2000
 			then 'Wysoka pensja'
 		else 'Brak wartosci'
 	end as "wysokosc pensji"
@@ -174,12 +149,12 @@ from scott.emp
 ;
 
 
--- 2. Wykorzystaj funkcję NVL, NVL2, COALESCE, DECODE do zamiany wartości NULL na 
+-- 2. Wykorzystaj funkcję NVL, NVL2, COALESCE, DECODE do zamiany wartości NULL na
 --    wartość 0 w przypadku wyświetlenia kolumny COMM w tabeli EMP.
 --    Przykład z wykorzystaniem składni CASE ma postać:
---        select ename ,sal, 
---        case when comm is null then 0 
---        else comm end as Dodatek 
+--        select ename ,sal,
+--        case when comm is null then 0
+--        else comm end as Dodatek
 --        from emp;
 
 select
@@ -209,7 +184,7 @@ order by comm nulls last
 
 
 -- 4. Podaj nazwę zalogowanego użytkownika oraz jego id (funkcja USER, UID)
---    Wyświetl aktualna datę w formacie np.: 01-04-2018 13:35:29 
+--    Wyświetl aktualna datę w formacie np.: 01-04-2018 13:35:29.
 
 select
 	user
@@ -219,8 +194,8 @@ from dual
 ;
 
 
--- 5. Zamień ciąg znaków na format daty np. '01-30-2017' (do wykorzystania podczas wstawia danych 
---    do pola typu Date)
+-- 5. Zamień ciąg znaków na format daty np. '01-30-2017' (do wykorzystania podczas wstawia danych
+--    do pola typu Date).
 
 select
 	to_date( '2017-01-30', 'yyyy-mm-dd' )
@@ -233,7 +208,7 @@ from dual
 ;
 
 
--- 6. Ile pełnych miesięcy upłynęło w okresie od pierwszej zatrudnionej osoby do ostatniej 
+-- 6. Ile pełnych miesięcy upłynęło w okresie od pierwszej zatrudnionej osoby do ostatniej
 --    zatrudnionej osoby (MONTHS_BETWEEN) – podaj w pełnych miesiącach?
 
 select
@@ -242,7 +217,7 @@ from scott.emp
 ;
 
 
--- 7. Jaki jest data ostatniego dnia danego miesiąca 
+-- 7. Jaki jest data ostatniego dnia danego miesiąca.
 
 select
 	last_day( current_date )
@@ -264,7 +239,7 @@ from dual
 
 
 
--- 9. Zaokrąglij datę, która przypada za 50 miesięcy do pierwszego stycznia danego roku
+-- 9. Zaokrąglij datę, która przypada za 50 miesięcy do pierwszego stycznia danego roku.
 
 select
 	round( add_months( timestamp'2024-01-01 01:23:45', 50 ) )
@@ -273,7 +248,7 @@ from dual
 
 
 -- 10. W jakim dniu tygodnia jest Sylwester tego roku (dzień tygodnia ma być w języku polskim)
---     wykorzystaj polecenie - alter session set nls_language
+--     wykorzystaj polecenie - alter session set nls_language.
 
 alter session set nls_language= Polish;
 select
@@ -283,7 +258,7 @@ from dual
 alter session set nls_language= English;
 
 
--- 11. Dodaj 3 miesiące do bieżącej daty
+-- 11. Dodaj 3 miesiące do bieżącej daty.
 
 select
 	add_months( current_date, 3 )
@@ -299,9 +274,9 @@ from dual
 ;
 
 
--- 13. Obliczyć średni zarobek w firmie (zaokrąglij ROUND oraz utnij TRUNC do dwóch miejsc po 
---     przecinku). Wykorzystaj funkcję to_char do przedstawienia w postaci wartości znakowej, gdzie 
---     mamy dwa miejsca po przecinku (czy działa zaokrąglanie)
+-- 13. Obliczyć średni zarobek w firmie (zaokrąglij ROUND oraz utnij TRUNC do dwóch miejsc po
+--     przecinku). Wykorzystaj funkcję to_char do przedstawienia w postaci wartości znakowej, gdzie
+--     mamy dwa miejsca po przecinku (czy działa zaokrąglanie).
 
 select
 	to_char( round( avg( sal ), 2 ))
@@ -332,8 +307,8 @@ where deptno = (
 ;
 
 
--- 16. Znaleźć, ile pracowników zostało zatrudnionych, w każdym roku i miesiącu, w którym 
---     funkcjonowała firma (wykorzystać operator ROLLUP i CUBE i za pomocą operatorów zbiorów 
+-- 16. Znaleźć, ile pracowników zostało zatrudnionych, w każdym roku i miesiącu, w którym
+--     funkcjonowała firma (wykorzystać operator ROLLUP i CUBE i za pomocą operatorów zbiorów
 --     UNION ALL, UNION, INTERSECT, MINUS zobaczyć czym różnią się dane wyniki zapytań).
 
 select
@@ -358,11 +333,11 @@ group by cube (
 ;
 
 
--- 17. Znaleźć, ile pracowników zostało zatrudnionych, w każdym roku i miesiącu, w którym 
---     funkcjonowała firma. Z tym że poziomo podajemy kolejne miesiące, a pionowo w pierwszej 
+-- 17. Znaleźć, ile pracowników zostało zatrudnionych, w każdym roku i miesiącu, w którym
+--     funkcjonowała firma. Z tym że poziomo podajemy kolejne miesiące, a pionowo w pierwszej
 --     kolumnie lata (DECODE).
 
-with hires as ( 
+with hires as (
 	select
 		extract( year from hiredate ) "year"
 		, extract( month from hiredate ) "month"
@@ -375,7 +350,7 @@ with hires as (
 		"year"
 		, "month"
 )
-select 
+select
 	"year" "<year>"
 	, sum( decode( "month", 1, "count" )) jan
 	, sum( decode( "month", 2, "count" )) feb
@@ -394,7 +369,7 @@ group by "year"
 ;
 
 
--- 18. Obliczyć średnie zarobki w każdym departamencie (podajemy pełną nazwę departamentu) 
+-- 18. Obliczyć średnie zarobki w każdym departamencie (podajemy pełną nazwę departamentu)
 --     wykorzystaj NATURAL JOIN.
 
 select
@@ -487,22 +462,22 @@ inner join scott.emp e_m
 ;
 
 
--- 25. Podzapytania w klauzuli FROM
+-- 25. Podzapytania w klauzuli FROM.
 --         select * from (select * from emp order by sal desc) where rownum <=3
 
-select 
+select
 	*
 from (
 	select
 		*
 	from scott.emp
 	order by sal desc
-) 
+)
 where rownum <= 3
 ;
 
 
--- 26. Podzapytania w klauzuli SELECT
+-- 26. Podzapytania w klauzuli SELECT.
 --         select ename, sal, (select max(sal) from emp) as Salary_max from emp;
 
 select
@@ -523,7 +498,7 @@ select
 	, sal
 from scott.emp
 where sal > (
-	select 
+	select
 		avg( sal )
 	from scott.emp
 )
@@ -537,7 +512,7 @@ select
 	, "JOB"
 from scott.emp
 where "JOB" = (
-	select 
+	select
 		"JOB"
 	from scott.emp
 	where ename = 'SMITH'
@@ -545,7 +520,7 @@ where "JOB" = (
 ;
 
 
--- 29. Jak sortować względem języka polskiego. - - ALTER SESSION SET NLS_SORT = Polish;
+-- 29. Jak sortować względem języka polskiego. - - ALTER SESSION SET NLS_SORT = Polish;.
 
 create private temporary table ora$ptt__pl_chars
 as select 'Ć' letter from dual
@@ -573,11 +548,11 @@ alter session set nls_sort= Binary;
 commit;
 
 
--- 30. Znaleźć pracowników, których pensja jest na liście najwyższych zarobków w departamentach 
+-- 30. Znaleźć pracowników, których pensja jest na liście najwyższych zarobków w departamentach
 --     (wykonaj jako zapytanie z podzapytaniem nieskorelowane i skorelowane). Wykonaj przed
 --     napisaniem zapytania polecenie:
---         INSERT INTO EMP (empno, ename, deptno, sal, hiredate) 
---         VALUES (101,'Łukasiński',10, 2850, to_date('01-30-2014','mm-dd-yy')); 
+--         INSERT INTO EMP (empno, ename, deptno, sal, hiredate)
+--         VALUES (101,'Łukasiński',10, 2850, to_date('01-30-2014','mm-dd-yy'));
 --         COMMIT;
 
 insert into scott.emp (
@@ -639,8 +614,8 @@ where empno = 101
 ;
 commit;
 
--- 31. Wyświetl tych pracowników, których pensja jest większa od pensji przynajmniej jednej osoby 
---     z departamentu o numerze 10 (operator ANY/SOME)
+-- 31. Wyświetl tych pracowników, których pensja jest większa od pensji przynajmniej jednej osoby
+--     z departamentu o numerze 10 (operator ANY/SOME).
 
 select
 	ename
@@ -655,7 +630,7 @@ where sal > any (
 ;
 
 
--- 32. Wybierzmy wszystkich pracowników, którzy zarabiają więcej niż ktokolwiek w departamencie 
+-- 32. Wybierzmy wszystkich pracowników, którzy zarabiają więcej niż ktokolwiek w departamencie.
 
 select
 	dname
@@ -672,9 +647,7 @@ natural join (
 )
 ;
 
-
 -- (operator ALL)
-
 select
 	d.dname
 	, ename
@@ -690,7 +663,7 @@ where sal >= all (
 ;
 
 
--- 33. Wybrać zawody, w których średnia płaca jest wyższa niż średnia płaca w zawodzie 'MANAGER'
+-- 33. Wybrać zawody, w których średnia płaca jest wyższa niż średnia płaca w zawodzie 'MANAGER'.
 
 select
 	"JOB"
@@ -718,7 +691,7 @@ fetch first 1 rows only
 ;
 
 
--- 35. Znaleźć osoby, które zarabiają mniej niż wynosi średnia w ich zawodach:
+-- 35. Znaleźć osoby, które zarabiają mniej niż wynosi średnia w ich zawodach.
 
 
 select
@@ -735,7 +708,7 @@ where sal < any (
 ;
 
 
--- 36. Za pomocą operatora EXIST znaleźć pracowników, którzy mają podwładnych:
+-- 36. Za pomocą operatora EXIST znaleźć pracowników, którzy mają podwładnych.
 
 select
 	empno
