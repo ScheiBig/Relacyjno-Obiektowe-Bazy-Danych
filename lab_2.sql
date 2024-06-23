@@ -6,10 +6,10 @@ declare
 begin
 	v1 := 10;
 	dbms_output.put_line('Zmienna v1: ' || v1);
-	
+
 	select
-		sal 
-	into v2 
+		sal
+	into v2
 	from scott.emp
 	where empno = 7369
 	;
@@ -86,7 +86,7 @@ begin
 		goto loop_fail;
 	end if;
 
-	
+
 	<< loop_fail >>
 	dbms_output.put_line( 'Zmienna ' || zmienna || ' nie zawiera liczb ' );
 	return;
@@ -115,12 +115,12 @@ declare
 	--//--
 	nowe_haslo varchar(64) := 'oracle1*';
 begin
-	
+
 	if length( nowe_haslo ) < 4
 	then
 		dbms_output.put_line( 'Hasło za krótkie' );
 	end if;
-	
+
 	if not regexp_like( nowe_haslo, '.*[a-zA-Z].*' )
 	then
 		dbms_output.put_line( 'Haslo musi zawierać przynajmniej jedną literę' );
@@ -141,11 +141,11 @@ show errors;
 
 
 
--- 4. Opracować przykładowy blok PL/SQL, który dla zmiennej datdaUrodzin policzy z dziennymi 
---    odsetkami jaka jest skapitalizowana wartość pieniędzy od daty urodzin do  dnia dzisiejszego 
+-- 4. Opracować przykładowy blok PL/SQL, który dla zmiennej datdaUrodzin policzy z dziennymi
+--    odsetkami jaka jest skapitalizowana wartość pieniędzy od daty urodzin do  dnia dzisiejszego
 --    przy założeniu, że dzień utrzymania dziecka kosztuje 12.5 zł dziennie,
 --    a odsetki dzienne 5/365 procenta.
-declare 
+declare
 	birth_date date := date'1996-06-18';
 	daily_add number := 12.5;
 	daily_percent number := 0.0001369863013698; /*5/356*/
