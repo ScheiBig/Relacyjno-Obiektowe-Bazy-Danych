@@ -58,7 +58,7 @@ create table departments as select * from HR.departments;
 --     lub modyfikowaniu danych pole LAST_NAME i FIRST_NAME będzie zamieniane
 --     na duże litery.
 
-create or replace trigger tr_zad_1
+create or replace trigger trig_zad_1
 	before insert or update
 	on Employees
 	for each row
@@ -68,7 +68,7 @@ begin
 end;
 /
 
-commit; set transaction name 'test__tr_zad_1';
+commit; set transaction name 'test__trig_zad_1';
 	insert into Employees (
 		first_name
 		, last_name
@@ -88,7 +88,7 @@ commit; set transaction name 'test__tr_zad_1';
 	fetch first 1 rows only
 	;
 rollback;
-alter trigger tr_zad_1 disable;
+alter trigger trig_zad_1 disable;
 
 
 --  2. Zdefiniować wyzwalacz na tabeli EMPLOYEES, który z wykorzystaniem
@@ -100,7 +100,7 @@ create sequence seq_zad_2
 	start with 210
 	maxvalue 999999
 ;
-create or replace trigger tr_zad_2
+create or replace trigger trig_zad_2
 	before insert
 	on Employees
 	for each row
@@ -109,7 +109,7 @@ begin
 end;
 /
 
-commit; set transaction name 'test__tr_zad_2';
+commit; set transaction name 'test__trig_zad_2';
 	insert into Employees (
 		first_name
 		, last_name
@@ -129,7 +129,7 @@ commit; set transaction name 'test__tr_zad_2';
 	fetch first 1 rows only
 	;
 rollback;
-alter trigger tr_zad_2 disable;
+alter trigger trig_zad_2 disable;
 
 
 --  3. Zdefiniować wyzwalacz na tabeli EMPLOYEES, który sprawdzi czy pole
@@ -137,7 +137,7 @@ alter trigger tr_zad_2 disable;
 --     wstawianiu nowego pracownika lub jego modyfikacji. Jeśli nie, zwrócony
 --     zostanie komunikat o błędzie a transakcja zostanie wycofana.
 
-create or replace trigger tr_zad_3
+create or replace trigger trig_zad_3
 	before insert or update
 	on Employees
 	for each row
@@ -157,7 +157,7 @@ begin
 end;
 /
 
-commit; set transaction name 'test__tr_zad_3';
+commit; set transaction name 'test__trig_zad_3';
 	insert into Employees (
 		first_name
 		, last_name
@@ -177,13 +177,13 @@ commit; set transaction name 'test__tr_zad_3';
 	fetch first 1 rows only
 	;
 rollback;
-alter trigger tr_zad_3 disable;
+alter trigger trig_zad_3 disable;
 
 
 --  4. Zdefiniować wyzwalacz na tabeli EMPLOYEES, który wyświetli komunikat
 --     na ekranie jaki użytkownik został skasowany, wstawiony lub zmodyfikowany.
 
-create or replace trigger tr_zad_4
+create or replace trigger trig_zad_4
 	after insert or update or delete
 	on Employees
 	for each row
@@ -206,7 +206,7 @@ begin
 end;
 /
 
-commit; set transaction name 'test__tr_zad_4';
+commit; set transaction name 'test__trig_zad_4';
 	insert into Employees (
 		employee_id
 		, first_name
@@ -228,7 +228,7 @@ commit; set transaction name 'test__tr_zad_4';
 	fetch first 1 rows only
 	;
 rollback;
-alter trigger tr_zad_4 disable;
+alter trigger trig_zad_4 disable;
 
 
 --  5. Zdefiniować wyzwalcz na tabeli EMPLOYEES, który przy kasowaniu
@@ -247,7 +247,7 @@ fetch first 1 rows only
 ;
 truncate table Emp_Hist;
 	
-create or replace trigger tr_zad_5
+create or replace trigger trig_zad_5
 	after insert or update or delete
 	on Employees
 	for each row
@@ -284,7 +284,7 @@ begin
 end;
 /
 
-commit; set transaction name 'test__tr_zad_5';
+commit; set transaction name 'test__trig_zad_5';
 	insert into Employees (
 		employee_id
 		, first_name
@@ -307,7 +307,7 @@ commit; set transaction name 'test__tr_zad_5';
 	;
 	select * from Emp_Hist;
 rollback;
-alter trigger tr_zad_5 disable;
+alter trigger trig_zad_5 disable;
 
 
 --  6. Zdefiniować widok na tabeli EMPLOYEES i DEPARTMENTS. Na widoku
@@ -337,7 +337,7 @@ left join Departments d
 	using ( department_id )
 ;
 
-create or replace trigger tr_zad_6
+create or replace trigger trig_zad_6
 	instead of insert
 	on v_Emp_Dept
 	for each row
@@ -359,7 +359,7 @@ begin
 end;
 /
 
-commit; set transaction name 'test__tr_zad_6';
+commit; set transaction name 'test__trig_zad_6';
 	insert into v_Emp_Dept (
 		employee_id
 		, first_name
@@ -382,13 +382,13 @@ commit; set transaction name 'test__tr_zad_6';
 	;
 	select * from v_Emp_Dept;
 rollback;
-alter trigger tr_zad_6 disable;
+alter trigger trig_zad_6 disable;
 
 
 --  7. Zdefiniować wyzwalacz, który reaguje na pensję mniejszą od zera
 --     i wtedy zmienia jej wartość na 0.
 
-create or replace trigger tr_zad_7
+create or replace trigger trig_zad_7
 	before insert or update
 	on Employees
 	for each row
@@ -400,7 +400,7 @@ begin
 end;
 /
 
-commit; set transaction name 'test__tr_zad_7';
+commit; set transaction name 'test__trig_zad_7';
 	insert into Employees (
 		employee_id
 		, first_name
@@ -422,7 +422,7 @@ commit; set transaction name 'test__tr_zad_7';
 	fetch first 1 rows only
 	;
 rollback;
-alter trigger tr_zad_7 disable;
+alter trigger trig_zad_7 disable;
 
 
 --  8. Zdefiniować wyzwalacz na tabeli DEPARTMENTS, która zadziała
@@ -431,7 +431,7 @@ alter trigger tr_zad_7 disable;
 --     w tabeli EMPLOYEES (tzw. kaskadowa aktualizacja - ON CASCADE UPDATE
 --     dla systemu MS SQL SERVER).
 
-create or replace trigger tr_zad_8
+create or replace trigger trig_zad_8
 	before update
 	on Departments
 	for each row
@@ -446,7 +446,7 @@ begin
 end;
 /
 
-commit; set transaction name 'test__tr_zad_8';
+commit; set transaction name 'test__trig_zad_8';
 	select *
 	from Employees
 	where last_name = 'Gietz'
@@ -470,7 +470,7 @@ commit; set transaction name 'test__tr_zad_8';
 	where last_name = 'Gietz'
 	;
 rollback;
-alter trigger tr_zad_8 disable;
+alter trigger trig_zad_8 disable;
 
 
 --  9. Zdefiniować wyzwalacz, który zapewni, że żaden pracownik nie otrzyma
@@ -494,7 +494,7 @@ create table Change_Registry (
 	, constraint pk_Rejestr_Zmian primary key ( last_name, op_date )
 );
 
-create or replace trigger tr_zad_9
+create or replace trigger trig_zad_9
 	after insert or update
 	on Employees
 	for each row
@@ -526,7 +526,7 @@ end;
 /
 
 
-commit; set transaction name 'test__tr_zad_9';
+commit; set transaction name 'test__trig_zad_9';
 	select *
 	from Employees
 	where last_name = 'Gietz'
@@ -545,7 +545,7 @@ commit; set transaction name 'test__tr_zad_9';
 	;
 	select * from Change_Registry;
 rollback;
-alter trigger tr_zad_9 disable;
+alter trigger trig_zad_9 disable;
 
 
 -- 10. Mamy widok, który zawiera dane pracownika i nazwę departamentu,
@@ -572,7 +572,7 @@ left join Departments d
 	using ( department_id )
 ;
 
-create or replace trigger tr_zad_10
+create or replace trigger trig_zad_10
 	instead of insert
 	on v_Emp_Dept
 	for each row
@@ -604,7 +604,7 @@ end;
 /
 
 
-commit; set transaction name 'test__tr_zad_10';
+commit; set transaction name 'test__trig_zad_10';
 	insert into v_Emp_Dept ( 
 		first_name
 		, last_name
@@ -626,7 +626,7 @@ commit; set transaction name 'test__tr_zad_10';
 	fetch first 1 rows only
 	;
 rollback;
-alter trigger tr_zad_10 disable;
+alter trigger trig_zad_10 disable;
 
 
 -- 11. Zdefiniuj wyzwalacz na tabeli Departments, który wstawi rejestr
@@ -644,7 +644,7 @@ create table Dept_Registry (
 	, constraint pk_Dept_Registry primary key ( department_name, entry_date )
 );
 
-create or replace trigger tr_zad_11
+create or replace trigger trig_zad_11
 	before insert
 	on Departments
 	for each row
@@ -661,7 +661,7 @@ end;
 /
 
 
-commit; set transaction name 'test__tr_zad_11';
+commit; set transaction name 'test__trig_zad_11';
 	insert into Departments ( 
 		department_name
 	) values (
@@ -670,7 +670,7 @@ commit; set transaction name 'test__tr_zad_11';
 	select * from Departments;
 	select * from Dept_Registry;
 rollback;
-alter trigger tr_zad_11 disable;
+alter trigger trig_zad_11 disable;
 
 
 -- 12. Zdefiniuj wyzwalacz, który sprawdzi czy dana nazwa departamentu
@@ -679,7 +679,7 @@ alter trigger tr_zad_11 disable;
 --     nadrzędnego, w którym wstawiany jest dany departament i tutaj obsługujemy
 --     dany błąd łącznie z wycofaniem transakcji.
 
-create or replace trigger tr_zad_12
+create or replace trigger trig_zad_12
 	before insert or update
 	on Departments
 	for each row
@@ -702,7 +702,7 @@ end;
 /
 
 
-commit; set transaction name 'test__tr_zad_12';
+commit; set transaction name 'test__trig_zad_12';
 	
 	declare
 		Dept_Name_Duplicate exception;
@@ -721,4 +721,4 @@ commit; set transaction name 'test__tr_zad_12';
 	end;
 	/
 rollback;
-alter trigger tr_zad_12 disable;
+alter trigger trig_zad_12 disable;
